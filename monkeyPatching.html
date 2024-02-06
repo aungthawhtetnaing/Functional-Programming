@@ -1,0 +1,10 @@
+<html>
+    <script>
+        let str = "hello" ;
+        String.prototype.contain = function(cont)
+        {
+            return this.includes(cont);
+        }
+        console.log('To set prototype value',str.contain('hel'));
+    </script>
+</html>

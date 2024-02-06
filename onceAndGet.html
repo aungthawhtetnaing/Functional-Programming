@@ -1,0 +1,43 @@
+<html>
+    <script>
+        function payment (card)
+        {
+            console.log('payment api call','card',card);
+        };
+        function order (orderId,cardId)
+        {
+            console.log('order api call','orderid',orderId,'cardId',cardId);
+        };
+
+        function onceandget(fun,get)
+        {
+            let done = false ;
+            return function (...rest)
+            {
+                if(!done)
+                {
+                    done = true ;
+                    fun(...rest);
+                }
+                else
+                {
+                    get(...rest);
+                }
+            }
+        }
+
+            // const onceCall = fun => {
+            //     let done = false ;
+            //     return (...rest)=>{!done?(done=true,fun(...rest)):undefined}
+            // }
+
+        payment = onceandget(payment,()=>console.log('already use'));
+        payment('Creadit Card');
+        payment('222');
+
+        order = onceandget(order,()=>console.log('already order'));
+        order('1','002');
+        order('33');
+        
+    </script>
+</html>
