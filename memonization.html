@@ -1,0 +1,37 @@
+<html>
+    <script>
+        function loopdata (n)
+        {
+            console.log('fun fn',n);
+            let data = 1 ;
+            for ( let i = 1 ; i <= n ; i ++ )
+            {
+                data *= i
+            }
+            console.log('data',data);
+            return data ;
+        }
+
+        function fun ( fn )
+        {
+            let data1 = {};
+            return function (x)
+            {
+                if (data1[x])
+                {
+                    return data1[x];
+                }
+                else
+                {
+                    data1[x] = fn(x);
+                    return data1[x];
+                }
+            }
+        }
+
+        let data2 = fun(loopdata);
+        console.log(data2(5));
+        console.log(data2(5));
+        console.log(data2(5));
+    </script>
+</html>

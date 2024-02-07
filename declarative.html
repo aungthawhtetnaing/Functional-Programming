@@ -1,0 +1,40 @@
+<html>
+    <script>
+        let arr = [
+            {
+                name : 'aung aung',
+                gender : 'male',
+                age : 33 
+            },
+            {
+                name : 'mya mya',
+                gender : 'female',
+                age : 13 
+            },
+            {
+                name : 'Tin aung',
+                gender : 'male',
+                age : 43 
+            },
+            {
+                name : 'thidar aung',
+                gender : 'female',
+                age : 63 
+            },
+        ]
+        let name = arr.map(a=>a.name);
+        console.log('all name ',name);
+
+        let gender = arr.filter(a=>a.gender=='female')
+                        .map(a=>a.name);
+        console.log('female name',gender);
+
+        let totalAge = arr.map(a=>a.age)
+                            .reduce((a,b)=>a+b);
+        console.log('totalaAge',totalAge);
+
+        let youngerAge = arr.filter(a=>a.gender=='female')
+                                .reduce((a,b)=>a>b?b:a);
+        console.log('youngestFemale',youngerAge);
+    </script>
+</html>
