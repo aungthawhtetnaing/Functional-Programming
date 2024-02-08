@@ -1,0 +1,24 @@
+<html>
+    <script>
+        let toUpper = str => str.toUpperCase();
+        let data = str => str + 'world' ;
+
+        let f = x => x + 22 ;
+        let g = x => x * 10 ;
+        let int = x => x+1 ;
+
+        function pipe (...para)
+        {
+            return function (x)
+            {
+                return para.reduce((input,fun)=>{
+                    return fun(input);
+                },x)
+            }
+        } 
+
+        let compose =pipe(f,g,int);
+        console.log('compose many',compose(2));
+
+    </script>
+</html>

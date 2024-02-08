@@ -1,0 +1,31 @@
+<html>
+    <script>
+        let toUpper = str => str.toUpperCase();
+        let data = str => str + 'world' ;
+
+        function fun (str)
+        {
+            return toUpper(data(str));
+        }
+        console.log(fun('hello '));
+
+
+        function compose (f,g)
+        {
+            return function (x)
+            {
+                return f(g(x));
+            }
+        }
+
+        let composeToUppper = compose(toUpper,data);
+        console.log('compose fun',composeToUppper('hi'));
+
+        let f = x => x + 22 ;
+        let g = x => x * 10 ;
+
+        let composeInt = compose(f,g);
+        console.log('compose fun 2 ',composeInt(2));
+
+    </script>
+</html>

@@ -3,20 +3,10 @@
         let num = [1,1,1,2,2,2,2,3,3] ,k=2;
 
         let frequency = {};
-        // for(const n of num)
-        // {
-        //     if(!frequency[n])
-        //     {
-        //         frequency[n] = 1 ;
-        //     }
-        //     else
-        //     {
-        //         frequency[n] ++ ;
-        //     }
-        // }
+    
         frequency = num.reduce((group,element)=>{
             return !group[element]?(group[element]=1,group)
-                                      :(group[element]++,group)
+                                  :(group[element]++,group)
         },{})
         console.log('loop num and set data ',frequency);
         let arr = Object.entries(frequency);

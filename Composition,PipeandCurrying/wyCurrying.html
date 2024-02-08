@@ -1,0 +1,32 @@
+<html>
+    <script>
+        let toUpper = str => str.toUpperCase();
+        let data = str => str + 'world' ;
+
+        function pipe (...para)
+        {
+            return function (x)
+            {
+                return para.reduce((input,fun)=>{
+                    return fun(input);
+                },x)
+            }
+        } 
+
+        let f = x => x + 22 ;
+        let g = x => x * 10 ;
+        let int = x => x+1 ;
+        //let add = (x,y) =>x+y;
+        
+        function add (x)
+        {
+            return function (y)
+            {
+                return x + y ;
+            }
+        }
+
+        let mutiinput = pipe(int,add(3));
+        console.log('mutiinput currying',mutiinput(3));
+    </script>
+</html>
