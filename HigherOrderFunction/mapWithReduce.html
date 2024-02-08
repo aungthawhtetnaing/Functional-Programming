@@ -1,0 +1,15 @@
+<html>
+    <script>
+        const range = (start,end)=>new Array(end - start)
+                                        .fill(0)
+                                        .map((v,i)=>start+i);
+        let oneToFive = range(1,5);
+        console.log('1 to 5 ',oneToFive);
+
+        let triple = x => x*3 ;
+        let mapwithreduce = oneToFive.reduce((a,b)=>{
+            return [...a,triple(b)]
+        },[])
+        console.log('mapwithReduce',mapwithreduce);
+    </script>
+</html>

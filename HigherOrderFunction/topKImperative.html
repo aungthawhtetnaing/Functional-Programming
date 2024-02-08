@@ -1,0 +1,31 @@
+<html>
+    <script>
+        let num = [1,1,1,2,2,2,2,3,3] ,k=2;
+
+        let frequency = {};
+        for(const n of num)
+        {
+            if(!frequency[n])
+            {
+                frequency[n] = 1 ;
+            }
+            else
+            {
+                frequency[n] ++ ;
+            }
+        }
+        console.log('loop num and set data ',frequency);
+        let arr = Object.entries(frequency);
+        console.log('changearray',arr);
+
+        let arrsort =arr.sort((a,b)=>b[1]-a[1]);
+        console.log('arraysort',arrsort);
+
+        let result = [];
+        for (let i = 0 ; i < k ; i ++)
+        {
+            result.push(arrsort[i][0])
+        }
+        console.log('result',result);
+    </script>
+</html>

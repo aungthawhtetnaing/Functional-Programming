@@ -1,0 +1,18 @@
+<html>
+    <script>
+        let arr = [1,2,3,4,6,8,9];
+        let greater = x => x > 4 ;
+
+        let find = (arr,greater) => arr.reduce((x,y)=>{
+            return x===undefined && greater(y) ? y : x ; 
+        },undefined)
+
+        console.log('greater',find(arr,greater));
+
+        let findIndex = (arr,greater) => arr.reduce((x,y,index)=>{
+            return x===-1 && greater(y) ? index : x ; 
+        },-1)
+
+        console.log('find index',findIndex(arr,greater));
+    </script>
+</html>

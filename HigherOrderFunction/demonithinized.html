@@ -1,0 +1,12 @@
+<html>
+    <script>
+        let demothinized = fn => (...arg) => fn.bind(...arg)();
+
+        let mapFun = demothinized(Array.prototype.map);
+        let toUpperCaseFun = demothinized(String.prototype.toUpperCase);
+
+        let para = "functional" ;
+        let mapData = mapFun(para,toUpperCaseFun);
+        console.log('Demothinized',mapData);
+    </script>
+</html>

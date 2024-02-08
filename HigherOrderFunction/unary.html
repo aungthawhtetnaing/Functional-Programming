@@ -1,0 +1,10 @@
+<html>
+    <script>
+        let arr = ['1','2','3','4','5'];
+
+        let unary = fn => (...argument) => fn(argument[0]);
+        //map => value , index ,array
+        //parseInt => value ,redix
+        console.log('unary ' ,arr.map(unary(parseInt)));
+    </script>
+</html>
