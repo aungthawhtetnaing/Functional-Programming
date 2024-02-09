@@ -1,0 +1,30 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        console.log('inditity',R.identity(4));
+        let equals3 = R.equals(3);
+        //console.log('equal',equals3);
+        let arr = [3,3,3];
+        console.log('arr 3 ',R.all(equals3)(arr));
+
+
+        let data = R.pipe(R.flip(R.divide)(2),R.flip(R.add)(2))
+        console.log('x/2+2',data(10));
+
+        let arr2 = [1,2,3,4,5,6];
+        let data2 = R.converge(R.divide,[R.sum,R.length]);
+        console.log('convarge ',data2(arr2));
+
+        let even = a => a%2==0 ;
+        let evelvalue = R.count(even)(arr2);
+        console.log(evelvalue);
+
+        const defaultTo42 = R.defaultTo(42);
+        defaultTo42(null);  //=> 42
+        defaultTo42(undefined);  //=> 42
+        defaultTo42(false);  //=> false
+        defaultTo42('Ramda');  //=> 'Ramda'
+        // parseInt('string') results in NaN
+        defaultTo42(parseInt('string')); //=> 42
+    </script>
+</html>

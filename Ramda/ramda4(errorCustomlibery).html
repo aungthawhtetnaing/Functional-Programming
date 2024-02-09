@@ -1,0 +1,36 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        let isNotEmpty = str => !R.isEmpty(str);
+        let strLength = str => str.length > 3;
+
+        console.log(R.ap([isNotEmpty,strLength],['hi']));
+
+        function validation (validationfun,message)
+        {
+            return function (x)
+            {
+                let error = R.ap(validationfun,[x]);
+                let validationCheck = error.reduce((arr,val,index)=>{
+                    if(val==false)
+                    {
+                        return [...arr,index];
+                    }
+                    else
+                    {
+                        return [...arr]
+                    }
+                },[])
+
+                let message = validationCheck.reduce((arr,index)=>{
+                    return [...arr,errorsMessage[index]]
+                },[])
+                return message
+            }
+        }
+
+        const errorsMessage = ['NotEmpty ', 'Min Length should be greater than 3'];
+        let valid =validation([isNotEmpty,strLength],errorsMessage);
+        console.log('valid ',valid('lo'));
+    </script>
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        let arr = [1,2,3,4];
+        let gt = R.flip(R.gt)(0);
+        console.log('all ',R.all(gt)(arr));
+
+        let notEmpty = str => !R.isEmpty(str);
+
+        let minLength = str => str.length > 3 ;
+
+        
+        const errorsMessage = ['NotEmpty ', 'Min Length should be greater than 3']
+
+        console.log('AllPass ',R.allPass([notEmpty,minLength])('hello'));
+        console.log('AllPass ',R.allPass([notEmpty,minLength])('hi'));
+
+        console.log('Ap ',R.ap([R.multiply(2), R.add(3)], [1,2,3]) );
+        console.log('ap pass ',R.ap([notEmpty,minLength],['hiyy']));
+
+        let errors = R.ap([notEmpty,minLength],['']);
+        //let errorIndex = R.indexOf(false,errors);
+
+        let allErrorIndex = errors.reduce( (arr,value,index)=>{
+            if(value==false)
+            {
+                return [...arr,index];
+            }
+            else
+            {
+                return [...arr];
+            }
+        },[]);
+        let messages = allErrorIndex.reduce((arr,index)=>{
+            return [...arr,errorsMessage[index]]
+        },[]);
+
+        console.log('Index ',messages);
+    </script>
+</html>

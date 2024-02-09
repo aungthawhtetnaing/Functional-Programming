@@ -1,0 +1,38 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        let data = n => R.reduce(R.multiply,2,R.range(1,n+1));
+        console.log('data ',data(5));
+
+        let arr = [1,2,3,4,5];
+
+        console.log('head',R.head(arr));
+        console.log('tail',R.tail(arr));
+
+        let data2 = (arr) => {
+            // if (R.isEmpty(R.tail(arr))) {
+            //     return R.head(arr);
+            // }
+            // else
+            // {
+            //     return R.head(arr)+R.sum(R.tail(arr));
+            // }
+
+            return R.ifElse (
+                R.pipe(R.tail,R.isEmpty),
+                R.head,
+                R.converge(
+                    R.add,
+                    [
+                        R.head,
+                        R.pipe(
+                            R.tail,
+                            R.sum
+                        )
+                    ]
+                )
+            )(arr)
+        }
+        console.log(data2(arr));
+    </script>
+</html>
