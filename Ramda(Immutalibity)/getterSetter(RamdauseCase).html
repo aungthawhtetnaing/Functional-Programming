@@ -1,0 +1,43 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        let arr = [
+            {
+                name : 'Maung Maung',
+                age : 33 ,
+                gender : 'male' ,
+            },
+            {
+                name : 'SU Maung',
+                age : 23 ,
+                gender : 'female' ,
+            },
+            {
+                name : 'Kyaw Maung',
+                age : 40 ,
+                gender : 'male' ,
+            },
+            {
+                name : 'Thi Thi Maung',
+                age : 18 ,
+                gender : 'female' ,
+            },
+        ]
+
+        function api ()
+        {
+            // return arr;
+            return [];
+        }
+
+        let ageRoom = R.prop(2);
+        let getAge = R.prop('age');
+        let getRoom = R.pipe(ageRoom,getAge);
+
+        console.log('getfirst Room ',getRoom(api()));
+
+        let lenspath = R.lensPath([0,'age']);
+        let ageadd1 = R.over(lenspath,R.inc,arr);
+        console.log('age[0]+1',ageadd1);
+    </script>
+</html>

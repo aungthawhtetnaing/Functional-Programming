@@ -1,0 +1,25 @@
+<html>
+    <script>
+        function choice (a,b)
+        {
+            return function(accessor)
+            {
+                 return accessor(a,b);
+            }
+        }
+
+        function first (a,b)
+        {
+            return a ;
+        }
+
+        function second (a,b)
+        {
+            return b ;
+        }
+
+        let data = choice(10,'hello');
+        console.log('first',data(first));
+        console.log('second',data(second));
+    </script>
+</html>

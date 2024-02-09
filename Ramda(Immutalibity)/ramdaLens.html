@@ -1,0 +1,30 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        const obj = {
+            name : 'at' ,
+            age : 22 ,
+            arr : [1,2,3,4],
+            // address :{
+            //     city : 'ygn',
+            //     street : '22street'
+            // },
+            display () {
+                console.log('hello world');
+            }
+        }
+
+        
+        // let age = R.lens(R.prop('age'),R.assoc('age'));
+        let age = R.lensProp('age');
+        let view = R.view(age)(obj);
+        console.log('view',view);
+
+        let set = R.set(age,100,obj);
+        console.log('set',set);
+        console.log('obj',obj);
+
+        let over = R.over(age,R.inc,obj);
+        console.log('over',over);
+    </script>
+</html>

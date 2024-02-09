@@ -1,0 +1,15 @@
+<html>
+    <script>
+        function condition(prefun,thenfun,elsefun)
+        {
+            return function (...input)
+            {
+                return prefun(...input)?thenfun(input):elsefun(...input);
+            }
+        }
+
+        let even = x => x % 2 == 0 ;
+        let ifElse = condition(even,()=>'even',()=>'odd');
+        console.log('condition',ifElse(2));
+    </script>
+</html>

@@ -1,0 +1,57 @@
+<html>
+    <script>
+        const obj = {
+            name : 'at' ,
+            age : 22 ,
+            arr : [1,2,3,4],
+            // address :{
+            //     city : 'ygn',
+            //     street : '22street'
+            // },
+            display () {
+                console.log('hello world');
+            }
+        }
+
+        const obj2 = {
+            age : 44
+        }
+
+        let getField = attr => obj => obj[attr];
+        let getAge = getField('age');
+        console.log('getage',getAge(obj));
+        console.log('getage',getAge(obj2));
+
+        let getByPath = (arr,obj) =>{
+            if(arr[0] in obj)
+            {
+                return arr.length > 1 ? getByPath(arr.slice(1),obj[arr[0]])
+                                      : {...obj,
+                                           [ arr[0]]:obj[arr[0]]
+                                        }
+            }
+            else
+            {
+                return undefined ;
+            }
+        }
+        console.log('get city',getByPath(['address','city'],obj));
+
+
+
+        const setByPath = (arr, value, obj) => {
+                if (!(arr[0] in obj)) {
+                    obj[arr[0]] =
+                        arr.length === 1 ? null : Number.isInteger(arr[1]) ? [] : {};
+                }
+                if (arr.length > 1) {
+                    return setByPath(arr.slice(1), value, obj[arr[0]]);
+                } else {
+                    obj[arr[0]] = value;
+                    return obj;
+                }
+        };
+        setByPath(['address','city'],'ygn',obj);
+        console.log('Obj ',obj);
+    </script>
+</html>

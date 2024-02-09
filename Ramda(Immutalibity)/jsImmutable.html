@@ -1,0 +1,27 @@
+<html>
+    <script>
+        const a = 20 ;
+
+        const obj = {
+            name : 'at' ,
+            age : 22 ,
+            arr : [1,2,3,4],
+            display () {
+                console.log('hello world');
+            }
+        }
+
+        const shallowClone = {...obj};
+        shallowClone.arr.push(100);
+        shallowClone.arr.push(900);
+        console.log('shallow clone',shallowClone);
+        console.log('obj',obj);
+
+        const deep = JSON.stringify(obj);
+        const deepClone = JSON.parse(deep);
+
+        deepClone.arr.push(111);
+        console.log('deepClone ',deepClone);
+        console.log('obj',obj);
+    </script>
+</html>
