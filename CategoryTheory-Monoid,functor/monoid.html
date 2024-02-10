@@ -1,0 +1,36 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        let sum = {
+            empty : () => 0 ,
+            concat : (x,y) => x + y
+        }
+        let minValue = {
+            empty : () =>Number.MAX_VALUE,
+            concat : (x,y) => x < y ? x :y
+        }
+        let maxValue = {
+            empty : () =>Number.MIN_VALUE,
+            concat : (x,y) => x < y ? y : x
+        }
+
+        let fold = (array,monoid) => {
+            let accurate = monoid.empty();
+            for ( const input of array )
+            {
+                accurate = monoid.concat(accurate,input)
+            }
+            return accurate;
+        }
+        let arr = [11,12,45,66,-222];
+
+        let monoidSum = fold(arr,sum);
+        console.log('Sum ',monoidSum);
+
+        let monoidMin = fold(arr,minValue);
+        console.log('min',monoidMin);
+
+        let monoidMax = fold(arr,maxValue);
+        console.log('max',monoidMax);
+    </script>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+         let toUpper = (str) => str.toUpperCase();
+         let conCat = (str) => str + 'hi';
+         let str = undefined;
+
+         let mayBe = (value) =>( {
+            map(fn){
+                return !this.isNothing()?mayBe(fn(value)):mayBe(null);
+            },
+            isNothing()
+            {
+                return value == null || value == undefined;
+            },
+            orElse(defaultValu)
+            {
+                return !this.isNothing()?mayBe(value):mayBe(defaultValu)
+            },
+            valueOf()
+            {
+                return value;
+            }
+         })
+         mayBe.of = mayBe ;
+         let data = mayBe.of(str).map(toUpper).map(conCat).orElse('no have str');
+         console.log('data Maybe',data.valueOf());
+    </script>
+</html>

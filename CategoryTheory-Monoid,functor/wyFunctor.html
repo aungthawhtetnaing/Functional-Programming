@@ -1,0 +1,24 @@
+<html>
+   
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+
+    <script>
+        const inc = x => x + 1 ;
+        const double = x => x*2 ;
+        let Container = (value) => ({
+            map(fn){
+                return Container(fn(value));
+            },
+            valueOf()
+            {
+                return value
+            }
+        })
+
+        Container.of = Container;
+        let counter = Container.of(100);
+        let counter2 = counter.map(inc).map(double);
+        console.log('counter'+counter);
+        console.log('counter'+counter2);
+    </script>
+</html>

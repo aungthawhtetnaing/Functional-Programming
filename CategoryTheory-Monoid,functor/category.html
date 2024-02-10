@@ -1,0 +1,13 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+    <script>
+        let sum = x => x + 1 ;
+        let double = x => x * 2 ;
+        let mutipy = x => x / 3 ;
+
+        let fun1 = R.compose(R.compose(mutipy,double),sum);
+        let fun2 = R.compose(mutipy,R.compose(double,sum));
+        console.log('fun1',fun1(21));
+        console.log('fun2',fun2(21));
+    </script>
+</html>

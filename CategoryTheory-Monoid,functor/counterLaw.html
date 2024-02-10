@@ -1,0 +1,31 @@
+<html>
+   
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.29.1/ramda.min.js"></script>
+
+    <script>
+        const inc = x => x + 1 ;
+        const double = x => x*2 ;
+        let Container = (value) => ({
+            map(fn){
+                return Container(fn(value));
+            },
+            valueOf()
+            {
+                return value
+            }
+        })
+
+        Container.of = Container;
+        let counter = Container.of(100);
+        console.log('check counter',counter.map(R.identity).valueOf() === counter.valueOf());
+
+        let composeFun = R.compose(double,inc);
+        let firstResult = counter.map(composeFun);
+
+        let secondResult = counter.map(inc).map(double);
+
+        let check = firstResult.valueOf()===secondResult.valueOf();
+        console.log(check);
+
+    </script>
+</html>
